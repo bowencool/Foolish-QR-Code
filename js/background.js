@@ -1,6 +1,6 @@
 (function () {
     qrcodeReader.callback = function (data) {
-        prompt('扫描结果：', data)
+        prompt('扫描结果：', decodeURIComponent(data))
     }
     chrome.contextMenus.create({
         title: '生成二维码', // %s表示选中的文字
