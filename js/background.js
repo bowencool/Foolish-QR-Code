@@ -4,13 +4,16 @@
         contexts: ['selection', 'link'],
         onclick: function (data) {
             var content = data.selectionText || data.linkUrl
-            var qr = qrcodeGenerator(4, 'L');
-            qr.addData(encodeURIComponent(content));
-            qr.make();
-            var img = qr.createImgTag(8)
             var rezWin = window.open('', '', 'width=360,height=390,top=200,left=500')
             rezWin.document.title = '生成结果'
-            rezWin.document.body.innerHTML = img
+            var div = document.createElement('div')
+            // https://github.com/davidshimjs/qrcodejs
+            new QRCode(div, {
+                width: 328,
+                height: 328,
+                text: content,
+            });
+            rezWin.document.body.appendChild(div);
             rezWin.focus()
         }
     })
