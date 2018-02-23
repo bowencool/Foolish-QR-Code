@@ -26,6 +26,6 @@
         }
     })
     qrcodeReader.callback = function (data) {
-        prompt('扫描结果：', decodeURIComponent(data))
+        prompt('扫描结果：', data)
     }
 })();
